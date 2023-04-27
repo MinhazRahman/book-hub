@@ -2,17 +2,18 @@ package com.bookhub.service;
 
 import com.bookhub.model.Book;
 import com.bookhub.repository.BookRepository;
-import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Data
+
 @Service
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService{
     // inject BookRepository using constructor injection
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
     @Override
     public List<Book> findAll() {
