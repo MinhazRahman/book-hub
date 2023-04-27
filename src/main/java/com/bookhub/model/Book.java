@@ -29,6 +29,9 @@ public class Book {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "author")
+    private String author;
+
     @Column(name = "description")
     private String description;
 
