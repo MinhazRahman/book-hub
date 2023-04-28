@@ -1,13 +1,13 @@
 package com.bookhub.controller;
 
-import com.bookhub.model.Book;
 import com.bookhub.model.BookCategory;
 import com.bookhub.service.BookCategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+// Accept calls from web browser scripts this origin
+@CrossOrigin("http://localhost:4200/")
 @RestController
 @RequestMapping("/bookhub")
 @RequiredArgsConstructor
