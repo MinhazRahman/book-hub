@@ -20,26 +20,22 @@ public class BookCategoryServiceImpl implements BookCategoryService {
 
     @Override
     public BookCategory findById(Long id) {
-        return bookCategoryRepository.findById(id).orElse(null);
+
+        return bookCategoryRepository.findById(id).orElseThrow();
     }
 
     @Override
-    @Transactional
     public BookCategory save(BookCategory bookCategory) {
         return bookCategoryRepository.save(bookCategory);
     }
 
     @Override
-    @Transactional
     public BookCategory update(Long id, BookCategory bookCategory) {
-        BookCategory existingBookCategory =bookCategoryRepository.findById(id).orElse(null);
+        BookCategory existingBookCategory = bookCategoryRepository.findById(id).orElseThrow();
 
-        if (existingBookCategory != null) {
-            existingBookCategory.setCategoryName(bookCategory.getCategoryName());
-            // save the Book, if id == 0, then save/insert otherwise update
-            return bookCategoryRepository.save(existingBookCategory);
-        }
-        return null;
+        existingBookCategory.setCategoryName(bookCategory.getCategoryName());
+        // save the Book, if id == 0, then save/insert otherwise update
+        return bookCategoryRepository.save(existingBookCategory);
     }
 
     @Override

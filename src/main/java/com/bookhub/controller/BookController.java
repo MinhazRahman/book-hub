@@ -3,6 +3,8 @@ package com.bookhub.controller;
 import com.bookhub.model.Book;
 import com.bookhub.service.BookService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,6 +41,20 @@ public class BookController {
             throw new RuntimeException("Book not found with id - " + bookId);
         }
         return book;
+    }
+
+    /**
+     * Define endpoint for GET "/books/findByCategoryId/{categoryId}"
+     * Returns the book
+     * */
+    @GetMapping("/books/findByCategoryId/{categoryId}")
+    public Page<Book> getBooksByCategoryId(@PathVariable(name = "categoryId") Long categoryId, Pageable pageable){
+        Page<Book> page = bookService.findByCategoryId(categoryId, pageable);
+
+        if (page == null){
+            throw new RuntimeException("Can't find Books not found with category id - " + categoryId);
+        }
+        return page;
     }
 
     /**

@@ -3,8 +3,9 @@ package com.bookhub.service;
 import com.bookhub.model.Book;
 import com.bookhub.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,31 +23,30 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public Book findById(Long id) {
-        return bookRepository.findById(id).orElse(null);
+
+        return bookRepository.findById(id).orElseThrow();
     }
 
     @Override
-    @Transactional
+    public Page<Book> findByCategoryId(Long id, Pageable pageable){
+        return bookRepository.findByCategoryId(id, pageable);
+    }
+    @Override
     public Book save(Book book) {
         return bookRepository.save(book);
     }
 
     @Override
-    @Transactional
     public Book update(Long id, Book book) {
-        Book existingBook =bookRepository.findById(id).orElse(null);
+        Book existingBook =bookRepository.findById(id).orElseThrow();
 
-        if (existingBook != null) {
-            existingBook.setName(book.getName());
-            existingBook.setAuthor(book.getAuthor());
-            // save the Book, if id == 0, then save/insert otherwise update
-            return bookRepository.save(existingBook);
-        }
-        return null;
+        existingBook.setName(book.getName());
+        existingBook.setAuthor(book.getAuthor());
+        // save the Book, if id == 0, then save/insert otherwise update
+        return bookRepository.save(existingBook);
     }
 
     @Override
-    @Transactional
     public void deleteById(Long id) {
         bookRepository.deleteById(id);
     }
