@@ -15,4 +15,6 @@ import java.util.Optional;
 public interface BookRepository extends JpaRepository<Book, Long> {
     Page<Book> findByCategoryId(@Param("categoryId") Long categoryId, Pageable pageable);
 
+    Page<Book> findByNameContaining(@Param("name") String name, Pageable pageable);
+
 }

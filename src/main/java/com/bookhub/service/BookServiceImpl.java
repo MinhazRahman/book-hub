@@ -31,6 +31,11 @@ public class BookServiceImpl implements BookService{
     public Page<Book> findByCategoryId(Long id, Pageable pageable){
         return bookRepository.findByCategoryId(id, pageable);
     }
+
+    @Override
+    public Page<Book> findByNameContaining(String name, Pageable pageable){
+        return bookRepository.findByNameContaining(name, pageable);
+    }
     @Override
     public Book save(Book book) {
         return bookRepository.save(book);

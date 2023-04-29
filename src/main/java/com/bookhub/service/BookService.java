@@ -11,6 +11,8 @@ public interface BookService {
     Book findById(Long id);
 
     Page<Book> findByCategoryId(Long id, Pageable pageable);
+
+    Page<Book> findByNameContaining(String name, Pageable pageable);
     Book save(Book book);
     Book update(Long id, Book book);
     void deleteById(Long id);

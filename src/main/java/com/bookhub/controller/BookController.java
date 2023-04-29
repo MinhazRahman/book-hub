@@ -52,9 +52,23 @@ public class BookController {
         Page<Book> page = bookService.findByCategoryId(categoryId, pageable);
 
         if (page == null){
-            throw new RuntimeException("Can't find Books not found with category id - " + categoryId);
+            throw new RuntimeException("Can't find Books with category id - " + categoryId);
         }
         return page;
+    }
+
+    /**
+     * Define endpoint for GET "/books/findByNameContaining/{bookName}"
+     * Returns the book
+     * */
+    @GetMapping("/books/findByNameContaining/{bookName}")
+    public Page<Book> getBooksByName(@PathVariable(name = "bookName") String bookName, Pageable pageable){
+        Page<Book> bookPage = bookService.findByNameContaining(bookName, pageable);
+
+        if (bookPage == null){
+            throw new RuntimeException("Can't find Books with name - " + bookName);
+        }
+        return bookPage;
     }
 
     /**
