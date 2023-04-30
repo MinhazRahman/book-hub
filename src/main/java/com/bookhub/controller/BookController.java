@@ -24,9 +24,9 @@ public class BookController {
      * Returns a list of books
      * */
     @GetMapping("/books")
-    public List<Book> getBooks(){
+    public Page<Book> getBooks(Pageable pageable){
         // retrieve all the books
-        return bookService.findAll();
+        return bookService.findAll(pageable);
     }
 
     /**
