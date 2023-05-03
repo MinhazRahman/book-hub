@@ -4,11 +4,15 @@ import com.bookhub.model.Address;
 import com.bookhub.model.Customer;
 import com.bookhub.model.Order;
 import com.bookhub.model.OrderItem;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Set;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
+@Builder
 public class Purchase {
     private Customer customer;
     private Address shippingAddress;

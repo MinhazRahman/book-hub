@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -31,4 +32,14 @@ public class Customer {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     @JsonBackReference
     private Set<Order> orders;
+
+    public void add(Order order) {
+        if (order != null){
+            if (orders == null){
+                orders = new HashSet<>();
+            }
+            orders.add(order);
+            order.setCustomer(this);
+        }
+    }
 }
