@@ -47,21 +47,21 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
-    @JsonManagedReference
+    //@JsonManagedReference
     private Customer customer;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shipping_address_id", referencedColumnName = "id")
-    @JsonBackReference
+   // @JsonBackReference
    private Address shippingAddress;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "billing_address_id", referencedColumnName = "id")
-    @JsonBackReference
+   // @JsonBackReference
    private Address billingAddress;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
-    @JsonBackReference
+   // @JsonBackReference
     private Set<OrderItem> orderItems = new HashSet<>();
 
     public void add(OrderItem orderItem){

@@ -30,7 +30,7 @@ public class Customer {
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    @JsonBackReference
+    //@JsonBackReference
     private Set<Order> orders;
 
     public void add(Order order) {

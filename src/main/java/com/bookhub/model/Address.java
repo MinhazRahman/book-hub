@@ -34,6 +34,6 @@ public class Address {
 
     @OneToOne
     @PrimaryKeyJoinColumn
-    @JsonManagedReference
+    //@JsonManagedReference
     private Order order;
 }

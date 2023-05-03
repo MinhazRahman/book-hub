@@ -33,6 +33,6 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    @JsonManagedReference
+  //  @JsonManagedReference
     private Order order;
 }
