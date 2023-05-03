@@ -62,14 +62,15 @@ public class Order {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     @JsonBackReference
-    private Set<OrderItem> orderItems;
+    private Set<OrderItem> orderItems = new HashSet<>();
 
-    public void add(OrderItem item){
-        if (item != null){
+    public void add(OrderItem orderItem){
+        if (orderItem != null){
             if(orderItems == null){
                 orderItems = new HashSet<>();
             }
-            item.setOrder(this);
+            orderItems.add(orderItem);
+            orderItem.setOrder(this);
         }
     }
 }
