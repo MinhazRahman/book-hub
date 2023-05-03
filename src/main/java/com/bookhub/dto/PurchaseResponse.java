@@ -4,8 +4,7 @@ import lombok.*;
 
 @Data
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Builder
 public class PurchaseResponse {
-    private final String orderTrackingNumber;
+    private  String orderTrackingNumber;
 }
