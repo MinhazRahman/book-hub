@@ -1,7 +1,10 @@
 package com.bookhub.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "customer")
@@ -24,4 +27,8 @@ public class Customer {
 
     @Column(name = "email")
     private String email;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    @JsonBackReference
+    private Set<Order> orders;
 }
