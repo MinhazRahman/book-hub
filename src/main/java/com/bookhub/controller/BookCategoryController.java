@@ -6,8 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-// Accept calls from web browser scripts this origin
-@CrossOrigin("http://localhost:4200/")
+
+
 @RestController
 @RequestMapping("/bookhub")
 @RequiredArgsConstructor
