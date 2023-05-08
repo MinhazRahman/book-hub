@@ -11,6 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "book")
@@ -60,4 +61,16 @@ public class Book {
     @JoinColumn(name = "category_id", nullable = false)
     @JsonManagedReference
     private BookCategory category;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book book)) return false;
+        return isActive() == book.isActive() && getUnitsInStock() == book.getUnitsInStock() && Objects.equals(getId(), book.getId()) && Objects.equals(getStockKeepingUnit(), book.getStockKeepingUnit()) && Objects.equals(getName(), book.getName()) && Objects.equals(getAuthor(), book.getAuthor()) && Objects.equals(getDescription(), book.getDescription()) && Objects.equals(getUnitPrice(), book.getUnitPrice()) && Objects.equals(getImageUrl(), book.getImageUrl()) && Objects.equals(getDateCreated(), book.getDateCreated()) && Objects.equals(getLastUpdated(), book.getLastUpdated()) && Objects.equals(getCategory(), book.getCategory());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getStockKeepingUnit(), getName(), getAuthor(), getDescription(), getUnitPrice(), getImageUrl(), isActive(), getUnitsInStock(), getDateCreated(), getLastUpdated(), getCategory());
+    }
 }

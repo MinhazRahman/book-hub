@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "state")
 @Getter
@@ -27,4 +29,16 @@ public class State {
     @JoinColumn(name = "country_id", nullable = false)
     @JsonManagedReference
     private Country country;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof State state)) return false;
+        return getId() == state.getId() && Objects.equals(getName(), state.getName()) && Objects.equals(getCountry(), state.getCountry());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getCountry());
+    }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -25,4 +26,16 @@ public class BookCategory {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     @JsonBackReference
     private Set<Book> books;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BookCategory that)) return false;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getCategoryName(), that.getCategoryName()) && Objects.equals(getBooks(), that.getBooks());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getCategoryName(), getBooks());
+    }
 }

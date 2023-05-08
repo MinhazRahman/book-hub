@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity
@@ -33,5 +34,15 @@ public class Country {
     @JsonBackReference
     private List<State> states;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Country country)) return false;
+        return getId() == country.getId() && Objects.equals(getCode(), country.getCode()) && Objects.equals(getName(), country.getName()) && Objects.equals(getStates(), country.getStates());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getCode(), getName(), getStates());
+    }
 }

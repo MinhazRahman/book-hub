@@ -1,16 +1,16 @@
 package com.bookhub.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "orders")
@@ -19,6 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,15 +63,29 @@ public class Order {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
    // @JsonBackReference
-    private Set<OrderItem> orderItems = new HashSet<>();
+    private List<OrderItem> orderItems = new ArrayList<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Order order)) return false;
+        return getTotalQuantity() == order.getTotalQuantity() && Objects.equals(getId(), order.getId()) && Objects.equals(getOrderTrackingNumber(), order.getOrderTrackingNumber()) && Objects.equals(getTotalPrice(), order.getTotalPrice()) && Objects.equals(getStatus(), order.getStatus()) && Objects.equals(getDateCreated(), order.getDateCreated()) && Objects.equals(getLastUpdated(), order.getLastUpdated()) && Objects.equals(getCustomer(), order.getCustomer()) && Objects.equals(getShippingAddress(), order.getShippingAddress()) && Objects.equals(getBillingAddress(), order.getBillingAddress()) && Objects.equals(getOrderItems(), order.getOrderItems());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getOrderTrackingNumber(), getTotalQuantity(), getTotalPrice(), getStatus(), getDateCreated(), getLastUpdated(), getCustomer(), getShippingAddress(), getBillingAddress(), getOrderItems());
+    }
 
     public void add(OrderItem orderItem){
         if (orderItem != null){
             if(orderItems == null){
-                orderItems = new HashSet<>();
+                orderItems = new ArrayList<>();
             }
             orderItems.add(orderItem);
             orderItem.setOrder(this);
         }
     }
+
+
 }
