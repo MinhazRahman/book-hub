@@ -35,7 +35,7 @@ public class OrderController {
 
     @GetMapping("/orders/findByCustomerEmail/{customerEmail}")
     public Page<Order> getOrdersByCustomerEmail(@PathVariable(name = "customerEmail") String customerEmail, Pageable pageable){
-        Page<Order> orders = orderService.findByCustomerEmail(customerEmail, pageable);
+        Page<Order> orders = orderService.findByCustomerEmailOrderByDateCreatedDesc(customerEmail, pageable);
 
         if (orders == null){
             throw new RuntimeException("Can't find Orders with customer email - " + customerEmail);
