@@ -45,8 +45,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 <img src = "system_structure.jpeg" width = 600>
 
 ## Notes
-
 Describe any challenges encountered while building the app.
+- User authentication and authorization.
+- Connecting the Spring Boot backend with Angular frontend.
+- Maintaining application security
+- Deployment
 
 ## Requirements
 The fully fledged server uses the following:
@@ -56,7 +59,7 @@ The fully fledged server uses the following:
 * [MySQL Database Management Server](https://www.mysql.com/)
 
 ## Dependencies
-There are a number of third-party dependencies used in the project. Browse the Maven pom.xml file for details of libraries and versions used.
+There are a number of third-party dependencies used in the project. Browse the Maven `pom.xml` file for details of libraries and versions used.
 
 ## Building the project
 For building and running the application we need:
