@@ -51,9 +51,9 @@ Describe any challenges encountered while building the app.
 ## Requirements
 The fully fledged server uses the following:
 
-* Spring Framework 6.0
-* Spring Boot 3.0
-* MySQL Database Management Server
+* [Spring Framework 6.0](https://docs.spring.io/spring-framework/reference/)
+* [Spring Boot 3.0](https://spring.io/)
+* [MySQL Database Management Server](https://www.mysql.com/)
 
 ## Dependencies
 There are a number of third-party dependencies used in the project. Browse the Maven pom.xml file for details of libraries and versions used.
@@ -61,9 +61,9 @@ There are a number of third-party dependencies used in the project. Browse the M
 ## Building the project
 For building and running the application we need:
 
-*	Java JDK 17 or higher
-*	Maven 4.0.0 or higher
-*	Git
+* [Java JDK 17 or higher](https://www.oracle.com/java/technologies/downloads/)
+* [Maven 4.0.0 or higher](https://maven.apache.org/)
+* [Git](https://git-scm.com/)
 
 ## Running the application locally
 
