@@ -47,3 +47,43 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+## Requirements
+The fully fledged server uses the following:
+
+* Spring Framework 6.0
+* Spring Boot 3.0
+* MySQL Database Management Server
+
+## Dependencies
+There are a number of third-party dependencies used in the project. Browse the Maven pom.xml file for details of libraries and versions used.
+
+## Building the project
+For building and running the application we need:
+
+*	Java JDK 17 or higher
+*	Maven 4.0.0 or higher
+*	Git
+
+## Running the application locally
+
+There are several ways to run a Spring Boot application on the local machine. One way is to execute the `main` method in the `org.springframework.boot.SpringApplication` class from the IDE.
+
+Alternatively we can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
+
+Clone the project and use Maven to build the server
+
+```shell
+mvn clean install
+```
+
+```shell
+mvn spring-boot:run
+```
+## Deploying the application to OpenShift
+
+The easiest way to deploy the sample application to OpenShift is to use the [OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html):
+
+```shell
+oc new-app codecentric/springboot-maven3-centos~https://github.com/MinhazRahman/book-hub
+```
