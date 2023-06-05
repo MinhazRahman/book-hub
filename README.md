@@ -12,9 +12,11 @@
 * [x] A user can add the books to shopping cart.
 * [x] A user can purchase books. 
 * [x] A user can see his/her orders.
-* [ ] A registered customer must provide a working credit card or deposit money to the account for possible purchase.
-* [ ] A registered customer can browse the system, and make purchase options.
+* [x] A registered customer must provide a working credit card or deposit money to the account for possible purchase.
+* [x] A registered customer can browse the system, and make purchase options.
 * [x] A user can search info, browse his/her own private purchasing history/expenses, comments and (start) votes on the items s/he purchased already.
+* [x] Incorporated Okta Authorization Server to facilitate user login and logout functionalities.
+* [x] Integrated Stripe payment gateway that allows users to make payments with debit/credit cards.
 
 ## Video Walkthrough
 
