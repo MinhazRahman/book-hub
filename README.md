@@ -18,6 +18,9 @@
 * [x] Incorporated Okta Authorization Server to facilitate user login and logout functionalities.
 * [x] Integrated Stripe payment gateway that allows users to make payments with debit/credit cards.
 
+## Angular Frontend
+[BookHub - Online Bookstore](https://github.com/MinhazRahman/book-hub)
+
 ## Video Walkthrough
 
 ## REST Endpoints
